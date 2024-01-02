@@ -2,6 +2,7 @@ import csv
 from models.dish import Dish
 from models.ingredient import Ingredient
 
+
 class MenuData:
     def __init__(self, source_path: str) -> None:
         self.dishes = set()
@@ -10,9 +11,9 @@ class MenuData:
     def _menu_data(self, source_path: str) -> None:
         with open(source_path) as csv_file:
             reader = csv.reader(csv_file)
-            
+
             next(reader)
-            
+
             dishes_data = {}
 
             for row in reader:
@@ -20,7 +21,7 @@ class MenuData:
                 price_str = row[1]
                 ingredient_name = row[2]
                 quantity_str = row[3]
-                
+
                 price = float(price_str)
                 quantity = int(quantity_str)
                 dish = dishes_data.get(dish_name)
